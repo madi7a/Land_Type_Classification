@@ -79,9 +79,11 @@ Both models perform very similarly, though DenseNet edges out slightly in report
 
 ## 🚀 Streamlit App
 
-This project includes a **Streamlit app** that allows you to upload satellite images and get predictions on land cover type.
+This project includes a **Streamlit app** that allows users to upload satellite images and get predictions on land cover types instantly.
 
-### 🔧 To Run the App Locally:
+🔗 **Live Demo:** [landtypeclassification-by-mad.streamlit.app](https://landtypeclassification-by-mad.streamlit.app/)
+
+### 🔧 To Run Locally:
 
 ```bash
 git clone https://github.com/madi7a/Land_Type_Classification.git
