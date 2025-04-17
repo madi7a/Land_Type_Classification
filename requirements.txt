@@ -1,10 +1,2 @@
 tensorflow
-Python 3.8+
 
-TensorFlow / Keras
-
-Streamlit
-
-Scikit-learn
-
-Matplotlib, Seaborn
