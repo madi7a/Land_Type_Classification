@@ -1,38 +1,90 @@
-# 🌍 DenseNet for Land Type Classification
+# Land Type Classification using Deep Learning (DenseNet & ResNet)
 
-This project applies a DenseNet-based Convolutional Neural Network to classify different types of land usage from satellite imagery. It leverages the RGB version of the EuroSAT dataset and is built using TensorFlow/Keras.
+This project focuses on classifying satellite images into different land cover types using two powerful CNN architectures: **DenseNet121** and **ResNet50**. The goal is to build a robust image classification model to distinguish between 10 classes of land types.
 
-## 🛰️ Project Goals
+### 🗂️ Dataset
+The dataset consists of RGB satellite images categorized into the following classes:
+- AnnualCrop
+- Forest
+- HerbaceousVegetation
+- Highway
+- Industrial
+- Pasture
+- PermanentCrop
+- Residential
+- River
+- SeaLake
 
-- Automate classification of land use types using satellite images.
-- Build a deep learning model based on DenseNet architecture.
-- Analyze performance metrics to evaluate real-world applicability.
+Each image is preprocessed and resized for training with transfer learning models.
 
-## 🧠 Model
+---
 
-- **Architecture**: DenseNet121
-- **Input**: RGB Satellite Images (64x64)
-- **Output**: Land type labels (e.g., Forest, Urban, Agricultural)
-- **Training**: Optimized with Adam, using Data Augmentation.
+## 🧠 Models Used
 
+### ✅ DenseNet121
+- Pretrained on ImageNet
+- Fine-tuned with:
+  - GlobalAveragePooling
+  - Fully Connected Dense Layer (Softmax)
+- EarlyStopping and ModelCheckpoint for best model selection
 
-## 🔧 Technologies Used
+**📈 Performance (DenseNet):**
+| Class                  | Precision | Recall | F1-score |
+|------------------------|-----------|--------|----------|
+| AnnualCrop             | 0.98      | 0.93   | 0.95     |
+| Forest                 | 0.93      | 0.99   | 0.96     |
+| HerbaceousVegetation   | 0.93      | 0.93   | 0.93     |
+| Highway                | 0.88      | 0.93   | 0.91     |
+| Industrial             | 0.95      | 0.92   | 0.94     |
+| Pasture                | 0.95      | 0.93   | 0.94     |
+| PermanentCrop          | 0.92      | 0.90   | 0.91     |
+| Residential            | 0.91      | 1.00   | 0.95     |
+| River                  | 0.95      | 0.87   | 0.91     |
+| SeaLake                | 1.00      | 0.97   | 0.98     |
 
-- Python 3.x
-- TensorFlow / Keras
-- Matplotlib, NumPy, Pandas
-- Jupyter Notebook
+- **Overall Accuracy:** **94%**
 
-## 📊 Results
+---
 
-- Accuracy: ~`(Insert your result here)%`
-- Confusion Matrix & Class-wise performance
-- Loss & Accuracy curves over epochs
+### ✅ ResNet50
+- Pretrained on ImageNet
+- Architecture:
+  - GlobalAveragePooling
+  - Dense, Dropout, BatchNormalization
+- Used EarlyStopping, ModelCheckpoint, and ReduceLROnPlateau
 
-_(Add visuals here if available)_
+**📊 Performance (based on training/validation plots & confusion matrix):**
+- Consistent training and validation accuracy
+- Visualizations include:
+  - Accuracy & Loss plots
+  - Confusion Matrix
+  - ROC-AUC per class
 
-## 📝 How to Run
+*(Exact accuracy not stated, but visually comparable to DenseNet.)*
 
-1. Clone the repository:
+---
+
+## 🔍 Comparison
+
+| Metric            | DenseNet121 | ResNet50    |
+|-------------------|-------------|-------------|
+| Accuracy          | **94%**     | ~94% (visual)|
+| F1-Score (avg)    | **0.94**    | N/A (similar)|
+| Complexity        | Medium      | Medium      |
+| Training Time     | Slightly Faster | Slightly Slower |
+
+Both models perform very similarly, though DenseNet edges out slightly in reported metrics.
+
+---
+
+## 🚀 Streamlit App
+
+This project includes a **Streamlit app** that allows you to upload satellite images and get predictions on land cover type.
+
+### 🔧 To Run the App Locally:
+
 ```bash
-git clone https://github.com/your-username/densnet-for-land-type-classification.git
+git clone https://github.com/madi7a/Land_Type_Classification.git
+cd Land_Type_Classification
+pip install -r requirements.txt
+streamlit run app.py
